@@ -1,0 +1,26 @@
+version: "3.7"
+
+services:
+  ring-mqtt:
+    container_name: ring-mqtt
+    restart: unless-stopped
+    image: tsightler/ring-mqtt
+   # ports:
+     # - 8554:8554  # Enable RTSP port for external media player access
+    volumes:
+      - ${DOCKER_PATCH}/ring_mqtt:/data 
+    environment:                       
+      - RINGTOKEN=${DOCKER_RINGTOKEN} #  https://github.com/tsightler/ring-mqtt/blob/main/docs/DOCKER.md#authentication
+      - MQTTHOST=${DOCKER_SERVER_IP}
+      - MQTTPORT=${DOCKER_MQTT_PORT}
+      - MQTTUSER=${DOCKER_MQTT_USER}        
+      - MQTTPASSWORD=${DOCKER_MQTT_PASS}
+      - ENABLECAMERAS=true
+      - SNAPSHOTMODE=all
+      - LIVESTREAMUSER=${DOCKER_RINGMQTT_STREAM_USER}
+      - LIVESTREAMPASSWORD=${DOCKER_RINGMQTT_STREAM_PASS}
+    logging:                      
+      options:
+        max-size: 10m
+        max-file: "3"
+

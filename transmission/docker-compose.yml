@@ -1,0 +1,24 @@
+version: "2.1"
+
+services:
+  transmission:
+    image: lscr.io/linuxserver/transmission:latest
+    container_name: transmission
+    environment:
+      - PUID=${DOCKER_PUID}
+      - PGID=${DOCKER_PGID}
+      - TZ=${DOCKER_TZ}
+      - USER=${DOCKER_PGID} #optional
+      - PASS=${DOCKER_PGID} #optional
+    volumes:
+      - ${DOCKER_PATCH}/transmission/config:/config
+      - ${DOCKER_PATCH_MEDIA_DOWNLOAD}:/downloads
+      - ${DOCKER_PATCH_MEDIA_DOWNLOAD}/Pelis:/Pelis
+      - ${DOCKER_PATCH_MEDIA_DOWNLOAD}/Dibus:/Dibus
+      - ${DOCKER_PATCH_MEDIA_DOWNLOAD}/Series:/Series
+      - ${DOCKER_PATCH}/transmission/watchs:/watch
+    ports:
+      - 9091:9091
+      - 51413:51413
+      - 51413:51413/udp
+    restart: unless-stopped

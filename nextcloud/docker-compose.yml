@@ -1,0 +1,17 @@
+version: "3"
+
+services:
+  nextcloud:
+    image: nextcloud
+    container_name: nextcloud
+    environment:
+      - PUID=${DOCKER_PUID}
+      - PGID=${DOCKER_PGID}
+      - TZ=${DOCKER_TZ}
+    volumes:
+      - ${DOCKER_PATCH}/config:/config
+      - ${DOCKER_PATCH}/nextcloud/data:/data
+      - /mnt/Cloud:/var/www/html
+    ports:
+      - 8080:80
+      

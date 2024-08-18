@@ -1,0 +1,29 @@
+version: '3'
+
+services:
+  mariadb:
+    image: linuxserver/mariadb
+    container_name: mariadb
+    environment:
+      - PUID=${DOCKER_PUID}
+      - PGID=${DOCKER_PGID}
+      - TZ=${DOCKER_TZ}
+      - MYSQL_ROOT_PASSWORD=${DOCKER_MARIADB_ROOT_PASSWORD}
+      - MYSQL_USER=${DOCKER_MARIADB_USER}
+      - MYSQL_PASSWORD=${DOCKER_MARIADB_USER_PASSWORD}
+      - MYSQL_DATABASE=${DOCKER_MARIADB_DATABASE_NAME}
+    volumes:
+      - ${DOCKER_PATCH_MARIADB}/config/mariadb:/config
+    ports:
+      - 3306:3306
+    restart: unless-stopped
+
+  phpmyadmin:
+    image: phpmyadmin
+    restart: unless-stopped
+    environment:
+      - PMA_HOST=mariadb
+    ports:
+      - "83:80"
+    depends_on:
+      - mariadb

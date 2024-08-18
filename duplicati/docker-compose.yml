@@ -1,0 +1,19 @@
+version: "2.1"
+
+services:
+  duplicati:
+    image: duplicati/duplicati:latest
+    container_name: duplicati
+    hostname: duplicati
+    healthcheck:
+      test: "curl -Lk -fsS http://localhost:8200 || exit 1"
+    network_mode: bridge
+    ports:
+      - 8200:8200
+    volumes:
+      - ${DOCKER_PATCH}/duplicati_data:/data:rw
+      - ${DOCKER_PATH_BACKUPS}:/backups:rw
+      - ${DOCKER_PATCH}:/source:ro
+    environment:
+      - TZ=${DOCKER_TZ}
+    restart: unless-stopped

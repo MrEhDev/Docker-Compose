@@ -1,0 +1,25 @@
+version: '3.5'
+
+services:
+  plex:
+    container_name: plex
+    image: lscr.io/linuxserver/plex:latest
+    restart: unless-stopped
+    privileged: true
+    network_mode: host
+    volumes:
+      - ${DOCKER_PATCH}/plex/config:/config
+      - ${DOCKER_PATCH}/plex/transcode:/transcode # Optional
+      - ${DOCKER_PATCH_MEDIA_DOWNLOAD}/Pelis:/Pelis
+      - ${DOCKER_PATCH_MEDIA_DOWNLOAD}/Dibus:/Dibus
+      - ${DOCKER_PATCH_MEDIA_DOWNLOAD}/Series:/Series
+    environment:
+      - PUID=${DOCKER_PUID}
+      - PGID=${DOCKER_PGID}
+      - TZ=${DOCKER_TZ}
+      VERSION : docker
+    cap_add:
+      - MKNOD
+      - SYS_ADMIN
+    devices:
+      - '/dev/fuse'

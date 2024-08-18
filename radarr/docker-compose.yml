@@ -1,0 +1,19 @@
+version: "2.1"
+
+services:
+  radarr:
+    image: linuxserver/radarr
+    container_name: radarr
+    environment:
+      - PUID=${DOCKER_PUID}
+      - PGID=${DOCKER_PGID}
+      - TZ=${DOCKER_TZ}
+      - UMASK_SET=022 #optional
+    volumes:
+      - ${DOCKER_PATCH}/radarr:/config
+      - ${DOCKER_PATCH_MEDIA_DOWNLOAD}/Pelis:/Pelis
+      - ${DOCKER_PATCH_MEDIA_DOWNLOAD}/Dibus:/Dibus
+      - ${DOCKER_PATCH_MEDIA_DOWNLOAD}:/downloads
+    ports:
+      - 7878:7878
+    restart: unless-stopped

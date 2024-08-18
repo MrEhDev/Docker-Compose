@@ -1,0 +1,18 @@
+version: "2.1"
+
+services:
+  fail2ban:
+    image: lscr.io/linuxserver/fail2ban:latest
+    container_name: fail2ban
+    cap_add:
+      - NET_ADMIN
+      - NET_RAW
+    network_mode: host
+    environment:
+      - PUID=${DOCKER_PUID}
+      - PGID=${DOCKER_PGID}
+      - TZ=${DOCKER_TZ}
+    volumes:
+      - /fail2ban/data:/config
+      - ${DOCKER_PATH_HOMEASSISTANT}:/remotelogs/homeassistant:ro #optional for you to review homme assistant logs
+    restart: unless-stopped

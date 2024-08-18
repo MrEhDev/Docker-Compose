@@ -1,0 +1,23 @@
+version: '2'
+
+services:
+      
+  nut-upsd:
+    container_name: nut-upsd
+    image: upshift/nut-upsd:latest
+    restart: unless-stopped
+    environment:
+      - API_USER=${DOCKER_NUTUPSD_API_USER}
+      - API_PASSWORD=${DOCKER_NUTUPSD_ADMIN_PASSWORD}
+      - ADMIN_PASSWORD=${DOCKER_NUTUPSD_ADMIN_PASSWORD}
+      - UPS_NAME=${DOCKER_NUTUPSD_UPS_NAME}
+      - UPS_DESC=${DOCKER_NUTUPSD_UPS_DESC}
+      - UPS_PORT=${DOCKER_NUTUPSD_UPS_PORT}
+      - UPS_DRIVER=${DOCKER_NUTUPSD_UPS_DRIVER}
+      - SHUTDOWN_CMD=${DOCKER_NUTUPSD_SHUTDOWN_CMD}
+      - TZ=${DOCKER_TZ}
+    ports:
+      - '3493:3493'
+    devices:
+    # lsusb para ver el puerto usb  buscar  Cypress Semiconductor USB to Serial
+      - /dev/bus/usb/001/003:/dev/bus/usb/001/003

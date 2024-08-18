@@ -1,0 +1,12 @@
+version: '3'
+
+services:
+  jdownloader-2:
+    container_name: jdownloader
+    image: jlesage/jdownloader-2
+    ports:
+      - "8500:5800"
+    volumes:
+      - ${DOCKER_PATCH}/jdownloader:/config:rw
+      - ${DOCKER_PATCH_MEDIA_DOWNLOAD}:/Descargas:rw
+      - ${DOCKER_PATCH_MEDIA_DOWNLOAD}/Pelis:/Pelis:rw

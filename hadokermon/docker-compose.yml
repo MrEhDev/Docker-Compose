@@ -1,0 +1,12 @@
+version: '3.4'
+
+services:
+  docker_mon:
+    image: philhawthorne/ha-dockermon
+    container_name: ha_dockermon
+    restart: always
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - ${DOCKER_PATCH}/hadokermon/config:/config
+    ports:
+      - 8126:8126

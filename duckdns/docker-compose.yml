@@ -1,0 +1,16 @@
+version: "2.1"
+
+services:
+  duckdns:
+    image: ghcr.io/linuxserver/duckdns
+    container_name: duckdns
+    environment:
+      - PUID=${DOCKER_PUID}
+      - PGID=${DOCKER_PGID}
+      - TZ=${DOCKER_TZ}
+      - SUBDOMAINS=${DOCKER_DUCKDNS_DOMAIN}
+      - TOKEN=${DOCKER_DUCKDNS_TOKEN}
+      - LOG_FILE=false #optional
+    volumes:
+      - /path/to/appdata/config:/config #optional
+    restart: unless-stopped

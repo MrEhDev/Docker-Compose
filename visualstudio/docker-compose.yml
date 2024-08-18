@@ -1,0 +1,16 @@
+version: "2.1"
+
+services:
+  code-server:
+    image: lscr.io/linuxserver/code-server
+    container_name: code-server
+    environment:
+      - PUID=${DOCKER_PUID}
+      - PGID=${DOCKER_PGID}
+      - TZ=${DOCKER_TZ}
+    volumes:
+      - ./config:/config
+      - ${DOCKER_PATCH}/homeassistant:/config/workspace
+    ports:
+      - 8443:8443
+    restart: unless-stopped

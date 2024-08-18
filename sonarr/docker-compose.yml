@@ -1,0 +1,20 @@
+version: "2.1"
+
+services:
+  sonarr:
+    image: ghcr.io/hotio/sonarr:release
+    container_name: sonarr
+    environment:
+      - PUID=${DOCKER_PUID}
+      - PGID=${DOCKER_PGID}
+      - TZ=${DOCKER_TZ}
+      - UMASK_SET=022 #optional
+    volumes:
+      - ${DOCKER_PATCH}/sonarr:/config
+      - ${DOCKER_PATCH_MEDIA_DOWNLOAD}/Series:/Series
+      - ${DOCKER_PATCH_MEDIA_DOWNLOAD}/Dibus:/Dibus
+      - ${DOCKER_PATCH_MEDIA_DOWNLOAD}:/downloads
+    ports:
+      - 8989:8989
+    restart: unless-stopped
+

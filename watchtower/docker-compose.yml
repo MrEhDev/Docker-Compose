@@ -1,0 +1,17 @@
+version: "3"
+
+services:
+  watchtower:
+    container_name: watchtower
+    image: containrrr/watchtower
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+    command:  --cleanup # Enter the name of the dockers you want to review before --cleanup
+    restart: unless-stopped
+    environment:
+      - TZ=${DOCKER_TZ}
+      - WATCHTOWER_MONITOR_ONLY=False #True if you just want me to review and report updates
+      - WATCHTOWER_LIFECYCLE_HOOKS=True
+      #- WATCHTOWER_POLL_INTERVAL=30 # Time to do the review, if not indicated, it will be done at 00:00
+      - WATCHTOWER_NOTIFICATIONS=shoutrrr
+      - WATCHTOWER_NOTIFICATION_URL=${DOCKER_TELEGRAM_CHAT_TOKEN}

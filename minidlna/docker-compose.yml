@@ -1,0 +1,14 @@
+version: '3.5'
+services:        
+  minidlna:
+    image: croc/minidlna
+    environment:
+      - SRVNAME=Plex_DLNA
+      - PORT=8205
+      - FOLDERS=/Pelis,/Dibus,/Series,/3D
+    volumes:
+      - ${DOCKER_PATCH_MEDIA_DOWNLOAD}/Pelis:/Pelis
+      - ${DOCKER_PATCH_MEDIA_DOWNLOAD}/Dibus:/Dibus
+      - ${DOCKER_PATCH_MEDIA_DOWNLOAD}/Series:/Series
+      - ${DOCKER_PATCH_MEDIA_DOWNLOAD2}3D:/3D
+    #restart: always
