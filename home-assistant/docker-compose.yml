@@ -20,3 +20,4 @@ HomeAssistant:
     devices:
       - /dev/ttyACM0
     restart: always
+    

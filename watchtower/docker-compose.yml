@@ -15,3 +15,4 @@ services:
       #- WATCHTOWER_POLL_INTERVAL=30 # Time to do the review, if not indicated, it will be done at 00:00
       - WATCHTOWER_NOTIFICATIONS=shoutrrr
       - WATCHTOWER_NOTIFICATION_URL=${DOCKER_TELEGRAM_CHAT_TOKEN}
+      

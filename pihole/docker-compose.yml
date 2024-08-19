@@ -18,7 +18,7 @@ services:
       - './etc-dnsmasq.d:/etc/dnsmasq.d'   
     dns:
       - 127.0.0.1
-      - 1.1.1.1
+      - 8.8.8.8
     cap_add:
       - NET_ADMIN
     restart: unless-stopped

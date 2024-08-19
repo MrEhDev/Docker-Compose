@@ -10,5 +10,3 @@ services:
       - ${DOCKER_PATCH_MEDIA_DOWNLOAD}/Pelis:/Pelis
       - ${DOCKER_PATCH_MEDIA_DOWNLOAD}/Dibus:/Dibus
       - ${DOCKER_PATCH_MEDIA_DOWNLOAD}/Series:/Series
-      - ${DOCKER_PATCH_MEDIA_DOWNLOAD2}3D:/3D
-    #restart: always

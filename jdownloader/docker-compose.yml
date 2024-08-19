@@ -10,3 +10,4 @@ services:
       - ${DOCKER_PATCH}/jdownloader:/config:rw
       - ${DOCKER_PATCH_MEDIA_DOWNLOAD}:/Descargas:rw
       - ${DOCKER_PATCH_MEDIA_DOWNLOAD}/Pelis:/Pelis:rw
+      

@@ -1,7 +1,6 @@
 version: '2'
 
 services:
-      
   nut-upsd:
     container_name: nut-upsd
     image: upshift/nut-upsd:latest

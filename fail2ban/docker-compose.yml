@@ -16,3 +16,4 @@ services:
       - /fail2ban/data:/config
       - ${DOCKER_PATH_HOMEASSISTANT}:/remotelogs/homeassistant:ro #optional for you to review homme assistant logs
     restart: unless-stopped
+    
