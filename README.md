@@ -18,13 +18,13 @@ Desde el índice podrás navegar de manera sencilla a los distintos pasos según
 
 # Indice: 
 
-[**1. Instalación de Docker y Docker-Compose**](/README.md###Instalación-de-Docker)
+[**1. Instalación de Docker y Docker-Compose**](https://github.com/EleazarDevTech/Docker-Compose/blob/main/README.md#instalaci%C3%B3n-de-docker)
 
-[**2. Configuración de variables de entorno**](/README.md###Configuración-de-variables-de-entorno)
+[**2. Configuración de variables de entorno**](https://github.com/EleazarDevTech/Docker-Compose/blob/main/README.md#configuraci%C3%B3n-de-variables-de-entorno)
 **O** 
-[**Configuración de archivos docker-compose**](/README.md##Configuración-de-datos-en-el-archivo-docker-compose)
+[**Configuración de archivos docker-compose**](https://github.com/EleazarDevTech/Docker-Compose/blob/main/README.md#configuraci%C3%B3n-de-datos-en-el-archivo-docker-compose)
 
-[**3. Levantar Docker**](/README.md##Uso-de-Docker-Compose)
+[**3. Levantar Docker**](https://github.com/EleazarDevTech/Docker-Compose/blob/main/README.md#uso-de-docker-compose)
 
 ---
 ---
